@@ -1,9 +1,8 @@
 fun main(args: Array<String>) {
-    val distinctArgsCount: Map<String, Int> = args.groupingBy { it }.eachCount()
-    val sortedDistinctArgsCount = distinctArgsCount
+    args
+        .groupingBy { it }
+        .eachCount()
         .toList()
-        .sortedWith(compareByDescending<Pair<String, Int>> { it.second }
-            .thenBy { it.first })
-        .toMap()
-    sortedDistinctArgsCount.forEach { println(it.key + " " + it.value) }
+        .sortedByDescending { it.second }
+        .forEach { println("${it.first} ${it.second}") }
 }
