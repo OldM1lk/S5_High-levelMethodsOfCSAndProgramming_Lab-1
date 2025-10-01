@@ -1,7 +1,7 @@
 fun main(args: Array<String>) {
     val words = getWords(args)
     val stats = processWords(words)
-    printStats(stats)
+    stats.forEach { (word, count) -> println("$word $count") }
 }
 
 fun getWords(args: Array<String>): List<String> =
@@ -19,6 +19,3 @@ fun processWords(words: List<String>): List<Pair<String, Int>> =
         .eachCount()
         .toList()
         .sortedByDescending { it.second }
-
-fun printStats(stats: List<Pair<String, Int>>) =
-    stats.forEach { (word, count) -> println("$word $count") }
